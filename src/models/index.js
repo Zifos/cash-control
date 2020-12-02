@@ -1,3 +1,5 @@
+import { errorTypes } from '@/helpers/errors'
+
 import accounts from './entities/accounts.model'
 import budgets from './entities/budgets.model'
 import categories from './entities/categories.model'
@@ -24,13 +26,49 @@ const models = {
 export const checkModel = (model, data) => {
   const errors = []
 
+  // Check model exist
+  if (!models[model]) {
+    return {
+      ok: false,
+      errors: [
+        { type: errorTypes.UNDEFINED_MODEL, model }
+      ]
+    }
+  }
+
+  // Check data keys
+  const modelKeys = Object.keys(models[model])
+  const dataKeys = Object.keys(data)
+
+  if (dataKeys.length < modelKeys.length) {
+    modelKeys.forEach(modelKey => {
+      if (!dataKeys.includes(modelKey)) {
+        errors.push({
+          type: errorTypes.MISSING_PROP,
+          expectedProp: modelKey
+        })
+      }
+    })
+  }
+
+  // Check data values types
   Object.entries(data).forEach(entry => {
     const [key, value] = entry
     const valueType = typeof value
     const expectedType = models[model][key]
 
+    if (expectedType === undefined) {
+      errors.push({
+        type: errorTypes.UNDEFINED_PROP,
+        key,
+        value
+      })
+      return
+    }
+
     if (valueType !== expectedType) {
       errors.push({
+        type: errorTypes.UNEXPECTED_TYPE,
         model,
         key,
         value,
@@ -41,7 +79,7 @@ export const checkModel = (model, data) => {
   })
 
   return {
-    ok: errors.length > 0,
+    ok: !errors.length,
     errors
   }
 }
