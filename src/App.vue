@@ -1,15 +1,55 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h2>Categorias</h2>
+    <ul>
+      <li v-for="c in categories" :key="c.id">{{ c.title }}</li>
+    </ul>
+    <button @click="addCategory">Add Category</button>
+    <button @click="updateCategory">Update Category</button>
+    <button @click="deleteCategory">Delete Category</button>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import useCategoryStore from '@/stores/categories.store'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+
+  setup () {
+    const categoryStore = useCategoryStore()
+
+    categoryStore.fetchCategories()
+
+    async function addCategory () {
+      await categoryStore.createCategory({
+        title: 'firstCategory',
+        color: 'fff',
+        iconUrl: 'http://loquesea.com'
+      })
+    }
+
+    async function updateCategory () {
+      await categoryStore.updateCategory(
+        categoryStore.categories.value[0].id,
+        {
+          title: 'otherCategoryExample',
+          color: 'aaa',
+          iconUrl: 'http://algomas.com'
+        }
+      )
+    }
+
+    async function deleteCategory () {
+      await categoryStore.deleteCategory(categoryStore.categories.value[0].id)
+    }
+
+    return {
+      addCategory,
+      updateCategory,
+      deleteCategory,
+      categories: categoryStore.categories
+    }
   }
 }
 </script>

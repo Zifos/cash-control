@@ -24,7 +24,7 @@ export default function () {
     try {
       state.isLoading = true
       const addedCategory = await createDocument(collection, category)
-      state.categories.push(addedCategory)
+      state.categories.unshift(addedCategory)
     } catch (err) {
       console.log(err)
     } finally {
