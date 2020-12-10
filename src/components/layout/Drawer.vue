@@ -32,12 +32,12 @@ export default {
   }
   .three-quarters {
     height: 75vh;
-    border-radius: 1rem;
+    border-radius: 1rem 1rem 0 0;
     box-shadow: 0px 0px 1rem #555;
   }
   .half {
     height: 50vh;
-    border-radius: 1rem;
+    border-radius: 1rem 1rem 0 0;
     box-shadow: 0px 0px 1rem #555;
   }
   .hide {

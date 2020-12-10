@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="['navbar', mod]">
+    :class="['navbar', mod ]">
     <nav>
       <nav-button
         v-for="button in navButtons"
@@ -81,6 +81,11 @@ export default {
   border-top: 1px solid #ccc;
   display: flex;
   padding: .5rem .25rem;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  opacity: 1;
+  transition: .5s;
   nav{
     display: flex;
     justify-content: space-around;
@@ -94,6 +99,10 @@ export default {
       position: absolute;
       bottom: .5rem;
     }
+  }
+  &.hide {
+    bottom: -6rem;
+    opacity: 0;
   }
 }
 </style>

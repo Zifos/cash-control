@@ -1,4 +1,4 @@
-import { reactive, toRefs, readonly } from 'vue'
+import { reactive, toRefs, readonly, computed } from 'vue'
 
 const state = reactive({
   drawer: 'hide',
@@ -34,11 +34,16 @@ export default function () {
     state.selectedSection = section
   }
 
+  const navBarMod = computed(() => {
+    return state.drawerCase === 'form' ? 'hide' : ''
+  })
+
   return {
     openLauncherEntitiesDrawer,
     openFormDrawer,
     closeDrawer,
     changeSection,
+    navBarMod,
     ...toRefs(readonly(state))
   }
 }

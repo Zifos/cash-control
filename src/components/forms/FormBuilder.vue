@@ -1,5 +1,12 @@
 <template>
-  <div>
+  <div class="form__wrapper">
+    <div class="form__wrapper__actions">
+      <button @click="openLauncherEntitiesDrawer">Cancelar</button>
+      <button>Guardar</button>
+    </div>
+    <div class="form__wrapper__content">
+      <input type="number"/>
+    </div>
     {{ `${entity} - ${action}` }}
   </div>
 </template>
@@ -10,12 +17,22 @@ import useLayoutStore from '@/stores/layout.store'
 export default {
   name: 'FormBuilder',
   setup () {
-    const { form } = useLayoutStore()
+    const { form, openLauncherEntitiesDrawer } = useLayoutStore()
     const { entity, action } = form.value
     return {
+      openLauncherEntitiesDrawer,
       entity,
       action
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .form__wrapper {
+    &__actions {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+</style>
