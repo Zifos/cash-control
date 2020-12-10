@@ -30,6 +30,10 @@ export default {
 
 <style lang="scss" scoped>
   .form__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
     &__actions {
       display: flex;
       justify-content: space-between;

@@ -13,7 +13,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
   .drawer__wrapper {
     width: 100vw;
     background: #fff;
@@ -25,6 +25,7 @@ export default {
     flex-direction: column;
     justify-content: flex-start;
     align-content: flex-end;
+    height: 100%;
     bottom: 0;
   }
   .complete {

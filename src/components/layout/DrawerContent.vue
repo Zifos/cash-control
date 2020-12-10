@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div v-if="drawerCase === 'addEntitiesMenu'">
+  <div class="drawer-content__wrapper">
+    <div v-if="drawerCase === 'addEntitiesMenu'" class="drawer-content__wrapper__case-container">
       <launch-entity-form-button
         v-for="item in entitiesItems"
         :key="`${item.entity}`"
@@ -10,7 +10,7 @@
         :entity="item.entity"
       />
     </div>
-    <div v-else-if="drawerCase === 'form'">
+    <div v-else-if="drawerCase === 'form'" class="drawer-content__wrapper__case-container">
       <form-builder />
     </div>
   </div>
@@ -44,5 +44,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .drawer-content__wrapper {
+    height: 100%;
+    &__case-container {
+      height: 100%;
+    }
+  }
 </style>
