@@ -2,18 +2,27 @@ import { reactive, toRefs, readonly } from 'vue'
 
 const state = reactive({
   drawer: 'hide',
+  drawerCase: null,
+  form: {
+    entity: null,
+    action: null
+  },
   principalButton: 'add',
   selectedSection: null
 })
 
 export default function () {
-  const openAddEntityDrawer = () => {
+  const openLauncherEntitiesDrawer = () => {
     state.drawer = 'half'
     state.principalButton = 'close'
+    state.drawerCase = 'addEntitiesMenu'
   }
 
-  const openFormDrawer = () => {
+  const openFormDrawer = (entity, action) => {
     state.drawer = 'complete'
+    state.drawerCase = 'form'
+    state.form.entity = entity
+    state.form.action = action
   }
 
   const closeDrawer = () => {
@@ -26,7 +35,7 @@ export default function () {
   }
 
   return {
-    openAddEntityDrawer,
+    openLauncherEntitiesDrawer,
     openFormDrawer,
     closeDrawer,
     changeSection,

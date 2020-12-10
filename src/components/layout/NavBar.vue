@@ -50,14 +50,14 @@ export default {
       selectedSection,
       principalButton,
       changeSection,
-      openAddEntityDrawer,
+      openLauncherEntitiesDrawer,
       closeDrawer
     } = useLayoutStore()
 
     const principalAction = () => {
       switch (principalButton.value) {
         case 'add':
-          openAddEntityDrawer()
+          openLauncherEntitiesDrawer()
           break
         case 'close':
           closeDrawer()

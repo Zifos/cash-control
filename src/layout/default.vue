@@ -4,11 +4,7 @@
       <router-view />
     </div>
     <drawer class="layout__drawer" :mod="drawerMod">
-      <add-entity text="Ingresar límite" color="blue"></add-entity>
-      <add-entity text="Ingresar categoría" color="green" @click="openFormDrawer"></add-entity>
-      <add-entity text="Ingresar ingreso" color="yellow"></add-entity>
-      <add-entity text="Ingresar gasto" color="orange"></add-entity>
-      <add-entity text="Ingresar cuenta" color="red"></add-entity>
+      <drawer-content :drawerCase="drawerCase" />
     </drawer>
     <nav-bar class="layout__navbar"/>
   </div>
@@ -17,7 +13,7 @@
 <script>
 import NavBar from '@/components/layout/NavBar'
 import Drawer from '@/components/layout/Drawer'
-import AddEntity from '@/components/layout/AddEntity'
+import DrawerContent from '@/components/layout/DrawerContent'
 import useLayoutStore from '@/stores/layout.store'
 
 export default {
@@ -25,14 +21,15 @@ export default {
   components: {
     NavBar,
     Drawer,
-    AddEntity
+    DrawerContent
   },
   setup () {
-    const { drawer, openFormDrawer } = useLayoutStore()
+    const { drawer, drawerCase, openFormDrawer } = useLayoutStore()
 
     return {
       drawerMod: drawer,
-      openFormDrawer
+      openFormDrawer,
+      drawerCase
     }
   }
 }

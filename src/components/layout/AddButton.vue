@@ -31,7 +31,7 @@ export default {
   }
 
   .close {
-    background: rgb(255,100,100);
+    background: #fa5252;
     label {
       transform: rotate(135deg);
     }
