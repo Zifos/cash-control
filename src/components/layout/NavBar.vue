@@ -1,13 +1,22 @@
 <template>
-  <div class="navbar">
+  <div
+    :class="['navbar', mod]">
     <nav>
-      <nav-button label="Salir" icon="logout" />
-      <nav-button label="Categorías" icon="categories" />
-      <nav-button label="Límites" icon="budgets" />
-      <nav-button label="Cuentas" icon="accounts" selected/>
+      <nav-button
+        v-for="button in navButtons"
+        :key="`button-${button.name}`"
+        :label="button.label"
+        :icon="button.icon"
+        :selected="selectedSection === button.name"
+        @click="changeSection(button.name)"
+      />
     </nav>
     <div class="navbar__primary-action">
-      <add-button class="primary-action__button"/>
+      <add-button
+        class="primary-action__button"
+        :mod="principalButton"
+        @click="principalAction"
+      />
     </div>
   </div>
 </template>
@@ -15,12 +24,53 @@
 <script>
 import NavButton from './NavButton'
 import AddButton from './AddButton'
+import useLayoutStore from '@/stores/layout.store'
 
 export default {
   name: 'NavBar',
   components: {
     NavButton,
     AddButton
+  },
+  props: [
+    'mod'
+  ],
+  data () {
+    return {
+      navButtons: [
+        { label: 'Salir', icon: 'logout', name: 'logout' },
+        { label: 'Categorías', icon: 'categories', name: 'categories' },
+        { label: 'Límites', icon: 'budgets', name: 'budgets' },
+        { label: 'Cuentas', icon: 'accounts', name: 'accounts' }
+      ]
+    }
+  },
+  setup () {
+    const {
+      selectedSection,
+      principalButton,
+      changeSection,
+      openAddEntityDrawer,
+      closeDrawer
+    } = useLayoutStore()
+
+    const principalAction = () => {
+      switch (principalButton.value) {
+        case 'add':
+          openAddEntityDrawer()
+          break
+        case 'close':
+          closeDrawer()
+          break
+      }
+    }
+
+    return {
+      principalButton,
+      changeSection,
+      selectedSection,
+      principalAction
+    }
   }
 }
 </script>
@@ -28,8 +78,7 @@ export default {
 <style lang="scss" scoped>
 .navbar{
   background: #fff;
-  border-radius: 1rem 1rem 0 0;
-  box-shadow: 0px 0px 4px #ccc;
+  border-top: 1px solid #ccc;
   display: flex;
   padding: .5rem .25rem;
   nav{

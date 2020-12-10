@@ -1,5 +1,7 @@
 <template>
-  <div :class="['button', selected ? 'selected' : '']">
+  <div
+    :class="['button', selected ? 'selected' : '']"
+  >
     <img :src="icons[icon]" />
     <label>{{label}}</label>
   </div>
