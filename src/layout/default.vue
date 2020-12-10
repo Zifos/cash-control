@@ -5,7 +5,7 @@
     </div>
     <drawer class="layout__drawer" :mod="drawerMod">
       <add-entity text="Ingresar límite" color="blue"></add-entity>
-      <add-entity text="Ingresar categoría" color="green" @click="closeDrawer"></add-entity>
+      <add-entity text="Ingresar categoría" color="green" @click="openFormDrawer"></add-entity>
       <add-entity text="Ingresar ingreso" color="yellow"></add-entity>
       <add-entity text="Ingresar gasto" color="orange"></add-entity>
       <add-entity text="Ingresar cuenta" color="red"></add-entity>
@@ -28,11 +28,11 @@ export default {
     AddEntity
   },
   setup () {
-    const { drawer, closeDrawer } = useLayoutStore()
+    const { drawer, openFormDrawer } = useLayoutStore()
 
     return {
       drawerMod: drawer,
-      closeDrawer
+      openFormDrawer
     }
   }
 }

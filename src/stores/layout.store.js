@@ -12,6 +12,10 @@ export default function () {
     state.principalButton = 'close'
   }
 
+  const openFormDrawer = () => {
+    state.drawer = 'complete'
+  }
+
   const closeDrawer = () => {
     state.drawer = 'hide'
     state.principalButton = 'add'
@@ -23,6 +27,7 @@ export default function () {
 
   return {
     openAddEntityDrawer,
+    openFormDrawer,
     closeDrawer,
     changeSection,
     ...toRefs(readonly(state))

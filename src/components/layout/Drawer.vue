@@ -19,7 +19,7 @@ export default {
     background: #fff;
     position: fixed;
     transition: .5s;
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1.5rem;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
