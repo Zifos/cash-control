@@ -42,21 +42,24 @@ export default {
     &__actions {
       display: flex;
       justify-content: space-between;
+      box-shadow: 0px 2px 3px -2px #ccc;
+      padding: 1rem;
       button {
         height: 2rem;
         font-size: .9rem;
         border-radius: .2rem;
         font-weight: bold;
+        border: 0;
       }
       &-cancel {
-        color: #fa5252;
-        background: #fff5f5;
-        border: 2px solid #fa5252;
+        color: #fff;
+        background: #fa5252;
+        box-shadow: 1px 1px 6px -2px #c92a2a;
       }
       &-save {
-        color: #40c057;
-        background: #ebfbee;
-        border: 2px solid #40c057;
+        color: #fff;
+        background: #40c057;
+        box-shadow: 1px 1px 6px -2px #2b8a3e;
       }
     }
     &__content {
