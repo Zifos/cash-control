@@ -24,14 +24,17 @@ export default {
     DrawerContent
   },
   setup () {
-    const { drawer, drawerCase, openFormDrawer, navBarMod } = useLayoutStore()
+    const { drawer, drawerCase, openFormDrawer, navBarMod, closeDrawer } = useLayoutStore()
 
     return {
       drawerMod: drawer,
       openFormDrawer,
+      closeDrawer,
       drawerCase,
       navBarMod
     }
   }
 }
 </script>
+
+<style lang="scss" scoped></style>

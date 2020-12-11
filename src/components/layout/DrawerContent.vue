@@ -1,18 +1,20 @@
 <template>
   <div class="drawer-content__wrapper">
-    <div v-if="drawerCase === 'addEntitiesMenu'" class="drawer-content__wrapper__case-container">
-      <launch-entity-form-button
-        v-for="item in entitiesItems"
-        :key="`${item.entity}`"
-        :color="item.color"
-        :text="item.text"
-        :action="item.action"
-        :entity="item.entity"
-      />
-    </div>
-    <div v-else-if="drawerCase === 'form'" class="drawer-content__wrapper__case-container">
-      <form-builder />
-    </div>
+    <transition>
+      <div v-if="drawerCase === 'addEntitiesMenu'" class="drawer-content__wrapper__case-container">
+        <launch-entity-form-button
+          v-for="item in entitiesItems"
+          :key="`${item.entity}`"
+          :color="item.color"
+          :text="item.text"
+          :action="item.action"
+          :entity="item.entity"
+        />
+      </div>
+      <div v-else-if="drawerCase === 'form'" class="drawer-content__wrapper__case-container">
+        <form-builder />
+      </div>
+    </transition>
   </div>
 </template>
 
