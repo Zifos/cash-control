@@ -26,30 +26,55 @@ export default {
   name: 'DrawerContent',
   components: {
     LaunchEntityFormButton,
-    FormBuilder
+    FormBuilder,
   },
   props: {
-    drawerCase: String
+    drawerCase: String,
   },
-  data () {
+  data() {
     return {
       entitiesItems: [
-        { text: 'Registrar categoría', color: 'violet', entity: 'category', action: 'create' },
-        { text: 'Registrar Límite', color: 'indigo', entity: 'budget', action: 'create' },
-        { text: 'Registrar Cuenta', color: 'cyan', entity: 'account', action: 'create' },
-        { text: 'Registrar Ingreso', color: 'teal', entity: 'income', action: 'create' },
-        { text: 'Registrar Gasto', color: 'pink', entity: 'expense', action: 'create' }
-      ]
+        {
+          text: 'Registrar categoría',
+          color: 'violet',
+          entity: 'category',
+          action: 'create',
+        },
+        {
+          text: 'Registrar Límite',
+          color: 'indigo',
+          entity: 'budget',
+          action: 'create',
+        },
+        {
+          text: 'Registrar Cuenta',
+          color: 'cyan',
+          entity: 'account',
+          action: 'create',
+        },
+        {
+          text: 'Registrar Ingreso',
+          color: 'teal',
+          entity: 'income',
+          action: 'create',
+        },
+        {
+          text: 'Registrar Gasto',
+          color: 'pink',
+          entity: 'expense',
+          action: 'create',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 
-<style lang="scss" scoped>
-  .drawer-content__wrapper {
+<style lang="postcss" scoped>
+.drawer-content__wrapper {
+  height: 100%;
+  &__case-container {
     height: 100%;
-    &__case-container {
-      height: 100%;
-    }
   }
+}
 </style>
