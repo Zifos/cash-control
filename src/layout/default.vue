@@ -6,7 +6,7 @@
     <drawer class="layout__drawer" :mod="drawerMod">
       <drawer-content :drawerCase="drawerCase" />
     </drawer>
-    <nav-bar class="layout__navbar" :mod="navBarMod"/>
+    <nav-bar class="layout__navbar" :mod="navBarMod" />
   </div>
 </template>
 
@@ -21,9 +21,9 @@ export default {
   components: {
     NavBar,
     Drawer,
-    DrawerContent
+    DrawerContent,
   },
-  setup () {
+  setup() {
     const { drawer, drawerCase, openFormDrawer, navBarMod, closeDrawer } = useLayoutStore()
 
     return {
@@ -31,10 +31,10 @@ export default {
       openFormDrawer,
       closeDrawer,
       drawerCase,
-      navBarMod
+      navBarMod,
     }
-  }
+  },
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="postcss" scoped></style>

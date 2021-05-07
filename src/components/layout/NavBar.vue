@@ -1,6 +1,5 @@
 <template>
-  <div
-    :class="['navbar', mod ]">
+  <div :class="['navbar', mod]">
     <nav>
       <nav-button
         v-for="button in navButtons"
@@ -12,11 +11,7 @@
       />
     </nav>
     <div class="navbar__primary-action">
-      <add-button
-        class="primary-action__button"
-        :mod="principalButton"
-        @click="principalAction"
-      />
+      <add-button class="primary-action__button" :mod="principalButton" @click="principalAction" />
     </div>
   </div>
 </template>
@@ -30,28 +25,26 @@ export default {
   name: 'NavBar',
   components: {
     NavButton,
-    AddButton
+    AddButton,
   },
-  props: [
-    'mod'
-  ],
-  data () {
+  props: ['mod'],
+  data() {
     return {
       navButtons: [
         { label: 'Salir', icon: 'logout', name: 'logout' },
         { label: 'Categorías', icon: 'categories', name: 'categories' },
         { label: 'Límites', icon: 'budgets', name: 'budgets' },
-        { label: 'Cuentas', icon: 'accounts', name: 'accounts' }
-      ]
+        { label: 'Cuentas', icon: 'accounts', name: 'accounts' },
+      ],
     }
   },
-  setup () {
+  setup() {
     const {
       selectedSection,
       principalButton,
       changeSection,
       openLauncherEntitiesDrawer,
-      closeDrawer
+      closeDrawer,
     } = useLayoutStore()
 
     const principalAction = () => {
@@ -69,35 +62,35 @@ export default {
       principalButton,
       changeSection,
       selectedSection,
-      principalAction
+      principalAction,
     }
-  }
+  },
 }
 </script>
 
-<style lang="scss" scoped>
-.navbar{
+<style lang="postcss" scoped>
+.navbar {
   background: #fff;
   border-top: 1px solid #ccc;
   display: flex;
-  padding: .5rem .25rem;
+  padding: 0.5rem 0.25rem;
   position: fixed;
   width: 100%;
   bottom: 0;
   opacity: 1;
-  transition: .5s;
-  nav{
+  transition: 0.5s;
+  nav {
     display: flex;
     justify-content: space-around;
     flex: 9 0 0;
   }
-  &__primary-action{
+  &__primary-action {
     flex: 3 0 0;
     display: flex;
     justify-content: center;
-    .primary-action__button{
+    .primary-action__button {
       position: absolute;
-      bottom: .5rem;
+      bottom: 0.5rem;
     }
   }
   &.hide {
